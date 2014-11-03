@@ -41,3 +41,11 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+
+/Dagos/Dagos/bin/*
+/Dagos/Dagos/obj/*
+/Dagos/Library/bin/*
+/Dagos/Library/obj/*
+/Dagos/DagosSetup/Release/*
+/Dagos/DagosSetup/Debug/*

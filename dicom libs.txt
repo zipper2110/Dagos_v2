@@ -1,0 +1,4 @@
+http://sourceforge.net/projects/gdcm/
+https://github.com/rcd/fo-dicom
+http://evildicom.rexcardan.com/getting-started/reading-and-writing/
+http://opendicom.sourceforge.net/samples.html
