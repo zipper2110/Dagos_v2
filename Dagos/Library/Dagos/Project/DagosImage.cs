@@ -7,38 +7,38 @@ using System.Threading.Tasks;
 
 namespace Library.Dagos.Project
 {
-    class Image
+    public class DagosImage
     {
         /*
          * This class should contain representation of CT images stack. Main goal is to store pixels data and provide access to it
          */
 
-        private byte[][][] imageData;
+        private byte[,,] imageData;
 
-        public byte[][][] ImageData { get { return imageData; } }
+        public byte[,,] ImageData { get { return imageData; } }
 
-        public int Width { get { return imageData.Length; } }
-        public int Height { get { return imageData[0].Length; } }
-        public int SliceCount { get { return imageData[0][0].Length; } }
+        public int Width { get { return imageData.GetLength(0); } }
+        public int Height { get { return imageData.GetLength(1); } }
+        public int SliceCount { get { return imageData.GetLength(2); } }
 
-        public Image(byte[][][] imageData)
+        public DagosImage(byte[,,] imageData)
         {
             this.imageData = imageData;
         }
 
-        public Image(FileInfo[] imageFiles)
+        public DagosImage(FileInfo[] imageFiles)
         {
             // TODO: implement import image from files
         }
 
-        public byte getPointValue(Point point)
+        public byte getPointValue(DagosPoint point)
         {
-            return imageData[point.X][point.Y][point.Z];
+            return getPointValue(point.X, point.Y, point.Z);
         }
 
         public byte getPointValue(int x, int y, int z)
         {
-            return imageData[x][y][z];
+            return imageData[x, y, z];
         }
 
         public bool hasPoint(int x, int y, int z)

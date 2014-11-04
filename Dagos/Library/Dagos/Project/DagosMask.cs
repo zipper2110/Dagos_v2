@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Library.Dagos.Project
 {
-    class Mask
+    public class DagosMask
     {
         /*
          * Binary mask contains info of what pixels of images are in this mask. Used for remembering sectors of image, such as lung or nodules
@@ -43,12 +43,12 @@ namespace Library.Dagos.Project
             }
         }
 
-        public Mask(bool[,,] maskData)
+        public DagosMask(bool[,,] maskData)
         {
             this.maskData = maskData;
         }
 
-        public bool getPointValue(Point point)
+        public bool getPointValue(DagosPoint point)
         {
             return getPointValue(point.X, point.Y, point.Z);
         }
@@ -58,7 +58,7 @@ namespace Library.Dagos.Project
             return maskData[x, y, z];
         }
 
-        public void setPointValue(Point point, bool value)
+        public void setPointValue(DagosPoint point, bool value)
         {
             setPointValue(point.X, point.Y, point.Z, value);
         }
@@ -75,7 +75,7 @@ namespace Library.Dagos.Project
                     z > -1 && z < this.SliceCount;
         }
 
-        public Mask invert()
+        public DagosMask invert()
         {
             bool[,,] invertedMaskData = new bool[Width, Height, SliceCount];
 
@@ -90,7 +90,7 @@ namespace Library.Dagos.Project
                 }
             }
 
-            return new Mask(invertedMaskData);
+            return new DagosMask(invertedMaskData);
         }
     }
 }

@@ -37,14 +37,17 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Compile Include="Dagos\Project\Formation.cs" />
-    <Compile Include="Dagos\Project\Image.cs" />
-    <Compile Include="Dagos\Project\Mask.cs" />
-    <Compile Include="Dagos\Project\Point.cs" />
-    <Compile Include="Dagos\Project\Project.cs" />
-    <Compile Include="Dagos\Project\Study.cs" />
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dagos\Logger.cs" />
+    <Compile Include="Dagos\Project\DagosFormation.cs" />
+    <Compile Include="Dagos\Project\DagosImage.cs" />
+    <Compile Include="Dagos\Project\DagosMask.cs" />
+    <Compile Include="Dagos\Project\DagosPoint.cs" />
+    <Compile Include="Dagos\Project\DagosProject.cs" />
+    <Compile Include="Dagos\Project\DagosStudy.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

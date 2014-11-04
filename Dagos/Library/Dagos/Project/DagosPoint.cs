@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Library.Dagos.Project
 {
-    class Point
+    public class DagosPoint
     {
         /*
          * represents 3d-point of image

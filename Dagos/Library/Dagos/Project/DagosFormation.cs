@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Library.Dagos.Project
 {
-    class Formation
+    public class DagosFormation
     {
         /*
          * This class represents formation. It will contain all info about formation (for example for nodules).
          * It will contain coordinates of all points of formation on image, and likely some calculated values (volume, density, sizes, lung section)
          */
 
-        private Mask formationMask;
+        private DagosMask formationMask;
 
         private string type;
     }
