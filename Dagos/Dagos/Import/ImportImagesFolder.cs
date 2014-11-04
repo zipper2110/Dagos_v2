@@ -118,6 +118,8 @@ namespace Dagos.Import
                         bitmapData = imageBitmap.LockBits(new Rectangle(0, 0, imageBitmap.Width, imageBitmap.Height),
                             System.Drawing.Imaging.ImageLockMode.ReadOnly, imageBitmap.PixelFormat);
 
+                        int bytesPerPixel = getBytesPerPixel(imageBitmap.PixelFormat);
+
                         bitmapDataArray = new byte[bitmapData.Stride * bitmapData.Height];
                         System.Runtime.InteropServices.Marshal.Copy(bitmapData.Scan0, bitmapDataArray, 0, bitmapData.Stride * bitmapData.Height);
 
@@ -125,7 +127,7 @@ namespace Dagos.Import
                         {
                             for (x = 0; x < imageBitmap.Width; x++)
                             {
-                                imageData[x, y, z] = bitmapDataArray[(x + y * bitmapData.Width) * 3];
+                                imageData[x, y, z] = bitmapDataArray[(x + y * bitmapData.Width) * bytesPerPixel];
                             }
                         }
                     }
@@ -178,6 +180,18 @@ namespace Dagos.Import
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             progressBarImport.Value = e.ProgressPercentage;
+        }
+
+        private int getBytesPerPixel(PixelFormat pixelFormat)
+        {
+            int bytesPerPixel = 0;
+            switch (pixelFormat)
+            {
+                case PixelFormat.Format32bppArgb:
+                    bytesPerPixel = 4;
+                    break;
+            }
+            return bytesPerPixel;
         }
     }
 }

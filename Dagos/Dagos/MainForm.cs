@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Library.Dagos.Project;
 using Dagos.Import;
+using System.Drawing;
+using System.IO;
 
 namespace Dagos
 {
@@ -96,6 +98,28 @@ namespace Dagos
         private void newProjectToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
             onNewProject();
+        }
+
+        private void button1_Click(object sender, System.EventArgs e)
+        {
+            if (currentStudy != null && currentStudy.Image != null)
+            {
+                Bitmap sliceBitmap = new Bitmap(currentStudy.Image.Width, currentStudy.Image.Height);
+                {
+                    for (int x = 0; x < currentStudy.Image.Width; x++)
+                    {
+                        for (int y = 0; y < currentStudy.Image.Height; y++)
+                        {
+                            sliceBitmap.SetPixel(x, y, Color.FromArgb(
+                                (int) currentStudy.Image.getPointValue(x, y, 100),
+                                (int) currentStudy.Image.getPointValue(x, y, 100),
+                                (int) currentStudy.Image.getPointValue(x, y, 100)));
+                        }
+                    }
+
+                    panel3.CreateGraphics().DrawImage(sliceBitmap, 0, 0);
+                }
+            }
         }
     }
 }
